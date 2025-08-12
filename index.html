@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas le Footballeur Courageux - La Série Éducative pour Enfants</title>
+    <style>
+        /* Polices et Styles Généraux */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Baloo+2:wght@700&display=swap' );
+
+        :root {
+            --primary-blue: #005A9C;
+            --primary-orange: #E87722;
+            --light-blue: #F0F8FF;
+            --text-dark: #333;
+            --text-light: #fdfdfd;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            background-color: var(--text-light);
+            overflow-x: hidden; /* Empêche le scroll horizontal dû aux animations */
+        }
+
+        /* Conteneurs */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 100px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            text-align: left;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+        }
+        
+        .logo-subtitle {
+            font-size: 0.95rem;
+            color: #e74c3c;
+            margin-top: 5px;
+            font-weight: 600;
+            padding: 3px 15px 5px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            display: inline-block;
+            transform: rotate(1deg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            left: 15px;
+            border: 1px dashed rgba(231, 76, 60, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(1deg) scale(1); }
+            50% { transform: rotate(1deg) scale(1.05); }
+            100% { transform: rotate(1deg) scale(1); }
+        }
+        header img.hero-image {
+            max-width: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+        header h1 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 2.8em;
+            color: var(--primary-blue);
+            margin: 0;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: backwards;
+        }
+        header p.subtitle {
+            font-size: 1.2em;
+            color: var(--primary-orange);
+            font-weight: 700;
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: backwards;
+        }
+        header .cta-button {
+            animation: fadeInUp 1s ease-out 0.6s;
+            animation-fill-mode: backwards;
+        }
+
+        /* Boutons CTA */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .primary-cta {
+            background-color: #FF9900;
+            color: white;
+        }
+        .secondary-cta {
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        section h2 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+        }
+
+        /* NOUVELLE SECTION : "Comment ça marche ?" */
+        .how-it-works-grid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: left;
+        }
+        .how-it-works-step {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 25px;
+            width: 280px;
+            border-top: 5px solid var(--primary-orange);
+        }
+        .how-it-works-step .step-number {
+            display: inline-block;
+            background-color: var(--primary-orange);
+            color: white;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.5em;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .how-it-works-step h3 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            color: var(--primary-blue);
+            font-size: 1.3em;
+            margin-top: 0;
+        }
+        .how-it-works-step img {
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: 1px solid #eee;
+        }
+
+        /* NOUVELLE SECTION : Aperçu du livre */
+        #book-preview {
+            background-color: var(--light-blue);
+        }
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            perspective: 1000px;
+        }
+        .preview-page {
+            position: relative;
+            width: 45%;
+            max-width: 350px;
+            aspect-ratio: 8.5 / 11;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+            margin: 15px;
+        }
+        .page-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 90, 156, 0.8);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .preview-page:hover .page-caption {
+            transform: translateY(0);
+        }
+        .preview-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .parent-section {
+            margin-top: 60px;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .parent-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .parent-image {
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .parent-tips {
+            flex: 1;
+        }
+        .parent-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+        .parent-tips li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .parent-tips li:before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        @media (max-width: 768px) {
+            .parent-content {
+                flex-direction: column;
+            }
+            .parent-image {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto 20px;
+            }
+            .preview-page {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        .preview-page:hover {
+            transform: scale(1.05);
+        }
+        #page1 {
+            background-image: url('./public/lecture_parent_enfant.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #page2 {
+            background-image: url('./public/enfant_colorie_lucas.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Section Roadmap */
+        #roadmap {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+        }
+        #roadmap h2 { color: var(--text-light); }
+        .roadmap-content {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .roadmap-content h3 {
+            color: #FF9900;
+            font-family: 'Baloo 2', cursive;
+        }
+        .roadmap-content ul { list-style-type: '✅ '; padding-left: 20px; }
+        .roadmap-content li { margin-bottom: 10px; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--text-dark);
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2em; }
+            .preview-container { flex-direction: column; }
+            .preview-page { width: 80%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo">Les Champions du Cœur</div>
+            <div class="logo-subtitle">avec Lucas</div>
+        </div>
+        <div class="container">
+            <img src="./public/lucas_hero_site_web.png" alt="Lucas, le héro souriant" class="hero-image">
+            <h1>Lucas le Footballeur Courageux</h1>
+            <p class="subtitle">Où la passion du football rencontre l'éveil personnel pour les enfants de 6 à 10 ans</p>
+            <p class="hero-description">Une série éducative unique qui utilise le football comme terrain de jeu pour enseigner la confiance en soi, la persévérance et les valeurs humaines, tout en créant des moments de complicité entre parents et enfants.</p>
+            <a href="[INSERER_VOTRE_LIEN_AMAZON_ICI]" class="cta-button primary-cta">🚀 Découvrir l'aventure éducative</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="how-it-works" class="fade-in-section">
+            <div class="container">
+                <h2>Un moment de complicité éducative</h2>
+                <p>Transformez la lecture en expérience interactive qui développe l'intelligence émotionnelle de votre enfant en 3 étapes</p>
+                <div class="how-it-works-grid">
+                    <div class="how-it-works-step">
+                        <div class="step-number">1</div>
+                        <h3>Lisez l'Aventure</h3>
+                        <p>Chaque chapitre raconte une histoire inspirante de Lucas. Lisez-la à voix haute avec votre enfant pour partager un moment de complicité et de découverte.</p>
+                        <img src="./public/lecture_parent_enfant.png" alt="Parent lisant le livre avec son enfant" class="step-image">
+                    </div>
+                    <div class="how-it-works-step">
+                        <div class="step-number">2</div>
+                        <h3>Échangez & Grandissez</h3>
+                        <p>À côté de chaque dessin, des questions simples sont proposées. Utilisez-les pour lancer une discussion et aider votre enfant à s'approprier la leçon du jour.</p>
+                        <img src="./public/double_page_livre_zoom.png" alt="Page du livre montrant les questions" class="step-image">
+                    </div>
+                    <div class="how-it-works-step">
+                        <div class="step-number">3</div>
+                        <h3>Coloriez le Courage</h3>
+                        <p>L'enfant s'approprie l'histoire en coloriant les aventures de Lucas. Un moment créatif qui allie plaisir du football et développement des compétences émotionnelles.</p>
+                        <img src="./public/enfant_colorie_lucas.png" alt="Enfant en train de colorier une page du livre" class="step-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="book-preview" class="fade-in-section">
+            <div class="container">
+                <h2>Découvrez comment le football peut devenir une leçon de vie</h2>
+                <p class="preview-intro">Feuilletez ces extraits pour vous plonger dans les aventures éducatives de Lucas.</p>
+                
+                <div class="preview-container">
+                    <div class="preview-page" style="background-image: url('./public/lecon1_ma_premiere_decouverte (1).webp')">
+                        <div class="page-caption">Chapitre 1 : Ma première découverte</div>
+                    </div>
+                    <div class="preview-page" style="background-image: url('./public/lecon1_illustration.webp')">
+                        <div class="page-caption">Activité éducative</div>
+                    </div>
+                </div>
+                
+                <div class="preview-container">
+                    <div class="preview-page" style="background-image: url('./public/lecon2_mon_premier_ballon.webp')">
+                        <div class="page-caption">Chapitre 2 : Mon premier ballon</div>
+                    </div>
+                    <div class="preview-page" style="background-image: url('./public/lecon2_illustration.webp')">
+                        <div class="page-caption">Activité éducative</div>
+                    </div>
+                </div>
+                
+                <div class="parent-section">
+                    <h3>À vous les parents</h3>
+                    <p class="parent-subtitle">Rejoignez la communauté des parents qui allient éducation positive et passion du football</p>
+                    <div class="parent-content">
+                        <img src="./public/double_page_livre_zoom.png" alt="Conseils pour les parents" class="parent-image">
+                        <div class="parent-tips">
+                            <p>Chaque page de Lucas est conçue pour stimuler le dialogue et l'apprentissage :</p>
+                            <ul>
+                                <li>Des questions pour encourager la réflexion</li>
+                                <li>Des activités ludiques pour renforcer les apprentissages</li>
+                                <li>Des moments de partage en famille</li>
+                            </ul>
+                            <a href="#" class="cta-button primary-cta">Découvrir plus de conseils</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="free-extract" class="fade-in-section">
+            <div class="container">
+                <h2>Recevez votre extrait gratuit !</h2>
+                <p>Commencez l'aventure maintenant ! Recevez par email les <strong>3 premières histoires en PDF</strong> et le <strong>Certificat de "Champion du Cœur"</strong> à imprimer.</p>
+                <form action="[LIEN_VERS_VOTRE_SERVICE_EMAIL]" method="post">
+                    <input type="email" name="email" placeholder="Votre meilleure adresse email" required style="padding: 12px; width: 60%; max-width: 350px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em;">
+                      
+  
+
+                    <button type="submit" class="cta-button secondary-cta">Recevoir mon cadeau</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="roadmap" class="fade-in-section">
+            <div class="container">
+                <h2>Un univers en pleine expansion</h2>
+                <p>"Lucas le Footballeur Courageux" n'est que le début. Découvrez notre vision pour faire des "Champions du Cœur" une référence en matière d'éducation positive.</p>
+                <div class="roadmap-content">
+                    <h3>📚 Une Aventure sur 21 Volumes</h3>
+                    <p>La série principale est conçue pour accompagner votre enfant sur le long terme, en abordant des thèmes de plus en plus profonds sur la maturité et le leadership.</p>
+                    <h3>🌟 6 Séries Dérivées (Spin-Offs ) à Venir</h3>
+                    <p>L'univers s'étendra avec de nouveaux héros pour aborder des thèmes variés comme le voyage, la diversité familiale et le leadership féminin.</p>
+                    <h3>🎯 Notre Promesse : Une Marque Durable</h3>
+                    <p>Nous construisons un univers bienveillant qui pourra se décliner en dessins animés et jeux pour devenir un pilier de l'enfance de vos enfants.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Les Champions du Cœur - Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script pour l'animation au défilement
+        const sections = document.querySelectorAll('.fade-in-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
